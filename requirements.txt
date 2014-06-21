@@ -2,7 +2,6 @@ Flask==0.10.1
 requests==2.2.1
 psutil
 cherryPy
-flask==0.9
 flask-login
 flask-openid
 flask-mail==0.7.6
