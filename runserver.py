@@ -4,45 +4,13 @@
 
 from app import app
 import os
-# Import CherryPy
-import cherrypy
+from cherrypy import wsgiserver
 
-cherrypy.config.update({'server.socket_host': '0.0.0.0',})
-cherrypy.config.update({'server.socket_port': int(os.environ.get('PORT', '5000')),})
-cherrypy.quickstart(app)
+d = wsgiserver.WSGIPathInfoDispatcher({'/': app})
+server = wsgiserver.CherryPyWSGIServer(('0.0.0.0', 5000), d)
 
-'''
 if __name__ == '__main__':
-
-    # Mount the application
-    cherrypy.tree.graft(app, "/")
-
-    # Unsubscribe the default server
-    cherrypy.server.unsubscribe()
-
-    # Instantiate a new server object
-    server = cherrypy._cpserver.Server()
-
-    # Configure the server object
-    server.socket_host = "0.0.0.0"
-    server.socket_port = 8080
-    server.thread_pool = 30
-
-    # For SSL Support
-    # server.ssl_module            = 'pyopenssl'
-    # server.ssl_certificate       = 'ssl/certificate.crt'
-    # server.ssl_private_key       = 'ssl/private.key'
-    # server.ssl_certificate_chain = 'ssl/bundle.crt'
-
-    # Subscribe this server
-    server.subscribe()
-
-    # Start the server engine (Option 1 *and* 2)
-
-    cherrypy.engine.start()
-    cherrypy.engine.block()
-
-
-from app import app
-app.run(debug = True)
-'''
+   try:
+      server.start()
+   except KeyboardInterrupt:
+      server.stop()
