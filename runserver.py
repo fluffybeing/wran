@@ -1,13 +1,17 @@
-'''
 # Import your application as:
 # from app import application
 # Example:
 
 from app import app
-
+import os
 # Import CherryPy
 import cherrypy
 
+cherrypy.config.update({'server.socket_host': '0.0.0.0',})
+cherrypy.config.update({'server.socket_port': int(os.environ.get('PORT', '5000')),})
+cherrypy.quickstart(app)
+
+'''
 if __name__ == '__main__':
 
     # Mount the application
@@ -37,7 +41,8 @@ if __name__ == '__main__':
 
     cherrypy.engine.start()
     cherrypy.engine.block()
-'''
+
 
 from app import app
 app.run(debug = True)
+'''
