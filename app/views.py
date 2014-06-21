@@ -24,6 +24,8 @@ def register():
     flash('User successfully registered')
     return redirect(url_for('login'))
 
+
+@app.route('/', methods=['GET','POST'])
 @app.route('/login',methods=['GET','POST'])
 def login():
     if request.method == 'GET':
@@ -45,14 +47,32 @@ def login():
     flash('Logged in successfully')
     return redirect('index')
 
+
+@app.route('/user/<username>')
+@login_required
+def user(username):
+    user = User.query.filter_by(username=username).first()
+    if user == None:
+        flash('User ' + nickname + ' not found.')
+        return redirect(url_for('index'))
+    posts = [
+        { 'author': user, 'body': 'Test post #1' },
+        { 'author': user, 'body': 'Test post #2' }
+    ]
+    return render_template('user.html',
+        user = user)
+
+
+@app.route('/index')
+@login_required
+def index():
+    user = g.user
+    return render_template("index.html",
+        user = user)
+
+
 @app.route('/logout')
 def logout():
     logout_user()
     return redirect('login')
 
-@app.route('/')
-@app.route('/index')
-@login_required
-def index():
-    user = g.user
-    return render_template("index.html")
