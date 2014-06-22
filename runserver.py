@@ -4,6 +4,7 @@
 
 from app import app
 import os
+'''
 from cherrypy import wsgiserver
 
 d = wsgiserver.WSGIPathInfoDispatcher({'/': app})
@@ -14,3 +15,5 @@ if __name__ == '__main__':
       server.start()
    except KeyboardInterrupt:
       server.stop()
+'''
+app.run(debug=True)
