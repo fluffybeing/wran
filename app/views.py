@@ -70,11 +70,22 @@ def index():
     return render_template("index.html",
         user = user)
 
+@app.route('/game1')
+def game1():
+    user = g.user
+    return render_template('game1.html',
+        user = user)
 
 @app.route('/logout')
 def logout():
     logout_user()
     return redirect('login')
+
+@app.route('/test')
+def test():
+    user = g.user
+    return render_template('layout.html',
+        user = user)
 
 @app.errorhandler(404)
 def internal_error(error):

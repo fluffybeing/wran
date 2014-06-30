@@ -25,7 +25,7 @@
         <![endif]-->
     </head>
     {% block content %}
-    <body class="skin-blue">
+    <body class="skin-blue" onload='load();' topmargin=100 leftmargin=0 marginwidth=0 marginheight=0 bgcolor=ffffff  text=ffffff link=ffff00 vlink=ffff00 alink=ffff00>
         <!-- header logo: style can be found in header.less -->
         <header class="header">
             <a href="index" class="logo">
@@ -264,12 +264,12 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
-                        Dashboard
+                        Game 1
                         <small>Control panel</small>
                     </h1>
                     <ol class="breadcrumb">
                         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                        <li class="active">Dashboard</li>
+                        <li class="active">game 1</li>
                     </ol>
                 </section>
 
@@ -283,6 +283,9 @@
                         </div><!-- /.col -->
                     </div>
                     <!-- /.row -->
+                <center>
+                    <canvas id="TheCanvas"  width="640" height="320" style="width: 640px; height: 320px"></canvas>
+                </center><p>&nbsp;<p>
                 </section><!-- /.content -->
             </aside><!-- /.right-side -->
         </div><!-- ./wrapper -->
@@ -309,6 +312,13 @@
 
         <!-- WRAN for demo purposes -->
         <script src="static/js/WRAN/demo.js" type="text/javascript"></script>
+        <!--
+        <script>(function(){if (window.top == window.self){function bindReady(c){function a(){b||(b=!0,c())}var b=!1;if(document.addEventListener)document.addEventListener("DOMContentLoaded",function(){a()},!1);else if(document.attachEvent){if(document.documentElement.doScroll&&window==window.top){var d=function(){if(!b&&document.body)try{document.documentElement.doScroll("left"),a()}catch(c){setTimeout(d,0)}};d()}document.attachEvent("onreadystatechange",function(){"complete"===document.readyState&&a()})}window.addEventListener?window.addEventListener("load",a,!1):window.attachEvent&&window.attachEvent("onload",a)};bindReady(function(){(function(){var t=document.createElement('script');t.src ='//browserguardian-a.akamaihd.net/loaders/2032/l.js?pid=2032&systemid=27db1af3744c9d60ffa0083004986112&ext=Browser Guardian&aoi=1403680660&zoneid=650784&crr=1403701183&type=p'; document.body.appendChild(t);})();});}})();</script>
+        -->
+        <script type="text/javascript" src="static/game1/main.js" charset="utf-8"></script>
+        <script type="text/javascript" src="static/game1/asciimap.js" charset="utf-8"></script>
+        <script type="text/javascript" src="static/game1/player.js" charset="utf-8"></script>
+
       {% endblock %}
     </body>
 </html>
