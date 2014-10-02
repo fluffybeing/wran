@@ -29,4 +29,4 @@ MAIL_PORT = 587
 MAIL_USE_TLS = True
 MAIL_USE_SSL = True
 MAIL_USERNAME = 'rr.rahul@icloud.com'
-MAIL_PASSWORD = 'Projectace2'
+MAIL_PASSWORD = '*******************'
